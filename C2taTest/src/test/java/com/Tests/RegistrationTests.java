@@ -1,5 +1,7 @@
 package com.Tests;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -9,6 +11,7 @@ import org.testng.annotations.Test;
 
 import org.testng.Assert;
 import com.baseClasses.Library;
+import com.pages.Mainpage;
 import com.pages.Registrationpage;
 
 
@@ -21,26 +24,27 @@ public class RegistrationTests extends Library{
 	String passwordcapital = "Password must include at least one capitalized letter!";
 	String passwordonenumber = "Password must include at least one number!";
 	String passwordcontainspecialchar = "Password must include at least one of these characters ~!@#$%^&*() !";
-	Registrationpage regpage;
+	Registrationpage regpage = new Registrationpage();
+	Mainpage mainpage = new Mainpage();
 	String username ="test";
 	String emailid = username + "@gmail.com";	
 	
 	
-	@BeforeTest
+	@BeforeClass
 	public void launchApp() {
 		browserSetUp();		
 	}
 	
 	
-  @Test(priority=1,description="Register a new user to application",dataProviderClass=Data_Provider.class ,dataProvider="Registration") 
+  @Test(priority=1,description="Register a new user to application",dataProviderClass=Data_Provider.class ,dataProvider="RegistrationAndLogin") 
   public void Registration_successfull_withallvalidvalues(String username,String emailid, String password) {
 	  
 	  RegisterDetails(username,emailid,password);
 	  String message = regpage.VerifyLoggedinUsername();
 	  String loggedinmsg = "Your are logged in as "+ username +". Log out?";	  
 	  Assert.assertEquals(loggedinmsg,message);
-	  regpage.Logout();
-	  regpage.RegisterlinkClick();
+	  mainpage.Logout();
+	  mainpage.RegisterlinkClick();
   }
   
   @Test(priority = 4,description="Register using empty values in fields")
@@ -104,7 +108,7 @@ public class RegistrationTests extends Library{
 	  Assert.assertEquals(message,passwordcontainspecialchar);
   }
   
-  @Test(priority = 2,description="Register with already registered username",dataProviderClass=Data_Provider.class ,dataProvider="Registration")
+  @Test(priority = 2,description="Register with already registered username",dataProviderClass=Data_Provider.class ,dataProvider="RegistrationAndLogin")
   public void Verify_alreadyregiseteredusername(String username,String emailid,String password) {
 	  RegisterDetails(username,emailid,password);
 	  String message = regpage.GetMessageOnRegisterClick();	  	  
@@ -112,7 +116,7 @@ public class RegistrationTests extends Library{
   }
   
   
-  @Test(priority = 3,description="Register with already registered emailid",dataProviderClass=Data_Provider.class ,dataProvider="Registration")
+  @Test(priority = 3,description="Register with already registered emailid",dataProviderClass=Data_Provider.class ,dataProvider="RegistrationAndLogin")
   public void Verify_alreadyregiseteredemailid(String username,String emailid,String password) {
 	  
 	  RegisterDetails(username+"!",emailid,password);	  
@@ -122,16 +126,16 @@ public class RegistrationTests extends Library{
   
      
     private void RegisterDetails(String username,String emailid,String password) {
-		 regpage = new Registrationpage();
-		 regpage.RegisterlinkClick();	  	 
-		  regpage.SetUsername(username);
-		  regpage.SetEmailId(emailid);
-		  regpage.SetPassword(password);
-		  regpage.RegisterButtonClick();  	 
+	  
+	  mainpage.RegisterlinkClick();	  	 
+	  regpage.SetUsername(username);
+	  regpage.SetEmailId(emailid);
+	  regpage.SetPassword(password);
+	  regpage.RegisterButtonClick();  	 
     }
     
     
-     @AfterTest
+     @AfterClass
 	public void QuitBrowser()
 	{
 		tearDown();

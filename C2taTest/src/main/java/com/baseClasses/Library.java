@@ -58,6 +58,8 @@ public class Library
 	
 	case "chrome":
 	WebDriverManager.chromedriver().setup();
+	ChromeOptions options = new ChromeOptions();
+	options.addArguments("user-data-dir=D:/temp/");
 	driver=new ChromeDriver();
 	logger.info(String.format("Identified the browser as %s. Launching the browser", browser));
 	break;
@@ -74,9 +76,9 @@ public class Library
 	break;
 	case "headlessbrowser":
 	WebDriverManager.chromedriver().setup();
-	ChromeOptions options=new ChromeOptions();
-	options.setHeadless(true);
-	driver=new ChromeDriver(options);
+	ChromeOptions headlessoptions=new ChromeOptions();
+	headlessoptions.setHeadless(true);
+	driver=new ChromeDriver(headlessoptions);
 	
 	default:		
 		logger.info(String.format("Could not identify the browser as %s. Please specify correct browser", browser));

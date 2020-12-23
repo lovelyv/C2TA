@@ -5,7 +5,7 @@ import com.reusablefunctions.SeleniumUtilities;
 
 public class Loginpage {
 	
-	By loginlink = By.linkText("Login");
+	
 	By nameorid = By.id("username");
 	By password = By.id("password");
 	By loginbutton = By.xpath("//button[text()='Login']");
@@ -13,6 +13,7 @@ public class Loginpage {
 	By lostlink = By.linkText("Lost your password?");
 	By loggedinusername = By.className("learnpress");
 	String lostpwdurl = "https://c2ta.co.in/my-account/lost-password/";
+	By message = By.cssSelector("div.learn-press-message.error");
 	
 	
 	SeleniumUtilities util = new SeleniumUtilities();
@@ -23,13 +24,14 @@ public class Loginpage {
 		util.SetText(this.password, password);
 	}
 	
-	public void LoginClick() {
+	public void LoginClick() {		
 		util.ElementClick(loginbutton);
 	}
 	
 	public void LoginClickwithRememberMe() {
-		util.ElementClick(rememberme);
+		util.ElementClick(rememberme);		
 		util.ElementClick(loginbutton);		
+		util.ExplicitWaitForElementVisibility(loggedinusername);
 	}
 	
 	public String VerifyLoggedinUsername() {		
@@ -37,9 +39,19 @@ public class Loginpage {
 		
 	}
 	
+	public String GetMessageOnLoginClick() {		
+		return util.ExplicitWaitForElementPresence(message).getText(); 		
+	}
+	
 	public void LostpasswordlinkClick() {		
 		util.ElementClick(lostlink);
 		util.ExplicitWaitForUrltochange(lostpwdurl);		
 	}
+	
+	public String Geturl() {
+		return util.getUrl();
+	}
+	
+	
 
 }

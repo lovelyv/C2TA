@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite parallel="false" name="Suite">
-  <test name="Test">
+<suite name="Suite">
+  <test name="Test"  preserve-order="true">
     <classes>
-      <class name="com.Tests.RegistrationTests">
-  <!--      <methods>
+     <class name="com.Tests.RegistrationTests">
+  <!--        <methods>
         <include name="Registration_successfull_withallvalidvalues" />
         
-      </methods> -->
+      </methods> --> 
       
       </class>
-      <!--  <class name="com.Tests.LoginTests"/>-->
+      <class name="com.Tests.LoginTests">
+      <!-- <methods>
+        <include name="VerifyLogin_rememberme" />
+        
+      </methods> -->
+      </class>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -5,8 +5,6 @@ import com.reusablefunctions.SeleniumUtilities;
 
 public class Registrationpage {
 	
-	
-	By registerlink = By.linkText("Register");
 	By username = By.id("reg_username");
 	By emailid = By.id("reg_email");
 	By password = By.id("reg_password");
@@ -14,17 +12,15 @@ public class Registrationpage {
 	By message = By.cssSelector("div.learn-press-message.error");
 	By errormessage = By.className("learn-press-message error");
 	By loggedinusername = By.className("learnpress");
-	By logout = By.cssSelector("a.logout_url");
+	
 	
 	
 	SeleniumUtilities util = new SeleniumUtilities();
 	
-	public void RegisterlinkClick() {
-		util.ElementClick(registerlink);
-		util.ExplicitWaitForElementPresence(username);
-	}
+	
 	
 	public void SetUsername(String username) {
+		util.ExplicitWaitForElementPresence(this.username);
 		util.SetText(this.username, username);		
 	}
 	
@@ -53,9 +49,7 @@ public class Registrationpage {
 		return util.getUrl();
 	}
 	
-	public void Logout() {
-		util.ElementClick(logout);
-	}
+	
 	
 	
 }

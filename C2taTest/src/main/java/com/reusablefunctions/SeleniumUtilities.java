@@ -25,6 +25,7 @@ public class SeleniumUtilities extends Library{
 			e.printStackTrace();
 		}
 	}
+	
 	public void getTitle() {
 		
 		System.out.println(driver.getTitle());
@@ -34,6 +35,15 @@ public class SeleniumUtilities extends Library{
 	public String getUrl() {
 		return driver.getCurrentUrl();
 	}	
+	
+	public WebElement GetElement(By locator) {
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		
+	}
+	
+	public void ExplicitwaitforElementClicked(By locator) {
+		wait.until(ExpectedConditions.attributeContains(locator, "checked", "1"));
+	}
 	
 	public void SetText(By locator, String value) {
 		driver.findElement(locator).sendKeys(value);
@@ -61,7 +71,7 @@ public class SeleniumUtilities extends Library{
 	
 	
 	public void Explicitlywait() {
-		wait=new WebDriverWait(driver,20);		
+		wait=new WebDriverWait(driver,2);		
 	}
 
 }
