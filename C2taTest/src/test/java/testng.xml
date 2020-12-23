@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Suite">
+  <test name="Test">
+    <classes>
+      <class name="com.Tests.RegistrationTests">
+  <!--      <methods>
+        <include name="Registration_successfull_withallvalidvalues" />
+        
+      </methods> -->
+      
+      </class>
+      <!--  <class name="com.Tests.LoginTests"/>-->
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
