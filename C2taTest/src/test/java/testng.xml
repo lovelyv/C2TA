@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite">
+<listeners>
+        <listener class-name="com.Tests.TestListener" />
+    </listeners>
+ 
   <test name="Test"  preserve-order="true">
     <classes>
      <class name="com.Tests.RegistrationTests">

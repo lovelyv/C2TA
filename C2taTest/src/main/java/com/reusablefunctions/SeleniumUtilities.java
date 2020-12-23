@@ -20,7 +20,7 @@ public class SeleniumUtilities extends Library{
 		TakesScreenshot ts=(TakesScreenshot)driver;
 		File source=ts.getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(source,new File("./src/test/resources/ScreenShots/" +fileName ));
+			FileUtils.copyFile(source,new File("./src/test/resources/ScreenShots/" +fileName +".png" ));
 		}catch(IOException e) {
 			e.printStackTrace();
 		}

@@ -11,23 +11,23 @@ public  class Data_Provider {
 
 		Object[][] 	data;	
 	
-//		if(m.getName().equals("Registration_successfull_withallvalidvalues"))
-//		{
-//			data=new Object[3][3];
-//			data[1][0]="test27";
-//			data[1][1]="test27@gmail.com";
-//			data[1][2]="PAssword1#";
-//
-//			data[2][0]="test28";
-//			data[2][1]="test28@gmail.com";
-//			data[2][2]="Password1#";
-//		}
-//		else
+		if(m.getName().equals("Registration_successfull_withallvalidvalues"))
+		{
+			data=new Object[3][3];
+			data[1][0]="test39";
+			data[1][1]="test39@gmail.com";
+			data[1][2]="PAssword1#";
+
+			data[2][0]="test40";
+			data[2][1]="test40@gmail.com";
+			data[2][2]="Password1#";
+		}
+		else
 		{
 			data=new Object[1][3];
 		}
-		data[0][0]="test34";			
-		data[0][1]="test34@gmail.com";			
+		data[0][0]="test41";			
+		data[0][1]="test41@gmail.com";			
 		data[0][2]="Password1#";
 		
 		if(m.getName().equals("Verify_alreadyregiseteredemailid"))

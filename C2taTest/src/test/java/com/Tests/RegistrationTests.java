@@ -135,6 +135,7 @@ public class RegistrationTests extends Library{
     }
     
     
+    
      @AfterClass
 	public void QuitBrowser()
 	{
